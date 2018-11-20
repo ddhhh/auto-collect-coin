@@ -1,8 +1,6 @@
 package com.example.administrator.myapplication.bean
 
-class Result<T> {
-    var code: Int = 0
-    var msg: String
-    var show = 0
-    var data: T? = null
-}
+data class Result<T: Any>(var code: Int,
+                     var msg: String,
+                     var show: Int,
+                     var data: T)
