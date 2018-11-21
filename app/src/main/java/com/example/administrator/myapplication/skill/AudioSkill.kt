@@ -12,22 +12,9 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class AudioSkill {
-    var audioCakeList: List<AudioColumn>? = null
     fun getAudioColumn() {
-        LpClient.createService().getAudioColumn().enqueue(object : Callback<Result<List<AudioColumn>>> {
-            override fun onFailure(call: Call<Result<List<AudioColumn>>>, t: Throwable) {
-                t.printStackTrace()
-            }
+        getAudioList("25", "1")
 
-            override fun onResponse(call: Call<Result<List<AudioColumn>>>, response: Response<Result<List<AudioColumn>>>) {
-                audioCakeList = response.body()?.data
-
-                audioCakeList?.forEach {
-                    getAudioList(it.audio_cate_id.toString(), "10")
-                }
-
-            }
-        })
     }
 
     fun getAudioList(cakeId: String, page: String) {
@@ -37,8 +24,11 @@ class AudioSkill {
             }
 
             override fun onResponse(call: Call<Result<AudioBean>>, response: Response<Result<AudioBean>>) {
-                Log.e("tag", response.body()?.data?.audio_cate_id.toString())
-                listen(response.body()?.data?.audio_cate_id.toString())
+                response.body()?.apply {
+                    this.data.audio_cate.forEach {
+                        listen(it.audio_id.toString())
+                    }
+                }
             }
 
         })

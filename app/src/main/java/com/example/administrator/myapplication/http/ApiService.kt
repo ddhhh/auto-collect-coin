@@ -87,4 +87,17 @@ interface ApiService {
     @POST("lianpai/post/share_success")
     fun like(@Field("content_type") content_type: String, @Field("content_id") id: String,
              @Field("post_comment_id") post_id: String, @Field("type") type: String, @Field("share_class") clazz: String): Call<ResponseBody>
+
+    @FormUrlEncoded
+    @POST("lianpai/message/msessage_details")
+    fun readNews(@Field("url") url: String): Call<ResponseBody>
+
+    @FormUrlEncoded
+    @POST("lianpai/coin/coin_hot")
+    fun getCoinHotList(@Field("limit") limit: String, @Field("page") page: String): Call<ResponseBody>
+
+    @FormUrlEncoded
+    @POST("lianpai/post/add_comment")
+    fun addComment(@Field("content_type") content_type: String, @Field("content_id") content_id: String, @Field("content") content: String,
+                   @Field("reply_id") reply_id : String, @Field("user_id") user_id: String): Call<ResponseBody>
 }

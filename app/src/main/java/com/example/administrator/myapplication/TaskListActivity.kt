@@ -9,15 +9,13 @@ class TaskListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_task_list)
-/*        SignInSkill().execute()
-        val shareSkill = ShareSkill()
-        shareSkill.shareNews()
-        shareSkill.listenMedia()
-        shareSkill.readNews()
-
+        SignInSkill().execute()
+        ShareSkill().shareNews()
         WatchVideoSkill().getVideoList()
-        AudioSkill().getAudioColumn()*/
+        AudioSkill().getAudioColumn()
         ReadNewsSkill().getMessageList()
-      //  LikeSkill().getLikeList()
+        LikeSkill().getLikeList()
+        AudioSkill().getAudioColumn()
+        CommunionSkill().getHotList()
     }
 }
