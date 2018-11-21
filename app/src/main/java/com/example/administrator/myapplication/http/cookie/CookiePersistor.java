@@ -14,34 +14,37 @@
  * limitations under the License.
  */
 
-package com.example.administrator.myapplication.http.cookie
+package com.example.administrator.myapplication.http.cookie;
 
-import okhttp3.Cookie
+import java.util.Collection;
+import java.util.List;
+
+import okhttp3.Cookie;
 
 /**
  * A CookiePersistor handles the persistent cookie storage.
  */
-interface CookiePersistor {
+public interface CookiePersistor {
 
-    fun loadAll(): List<Cookie>
+    List<Cookie> loadAll();
 
     /**
      * Persist all cookies, existing cookies will be overwritten.
      *
      * @param cookies cookies persist
      */
-    fun saveAll(cookies: Collection<Cookie>)
+    void saveAll(Collection<Cookie> cookies);
 
     /**
      * Removes indicated cookies from persistence.
      *
      * @param cookies cookies to remove from persistence
      */
-    fun removeAll(cookies: Collection<Cookie>)
+    void removeAll(Collection<Cookie> cookies);
 
     /**
      * Clear all cookies from persistence.
      */
-    fun clear()
+    void clear();
 
 }

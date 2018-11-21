@@ -14,24 +14,26 @@
  * limitations under the License.
  */
 
-package com.example.administrator.myapplication.http.cookie.cache
+package com.example.administrator.myapplication.http.cookie.cache;
 
-import okhttp3.Cookie
+import java.util.Collection;
+
+import okhttp3.Cookie;
 
 /**
  * A CookieCache handles the volatile cookie session storage.
  */
-interface CookieCache : Iterable<Cookie> {
+public interface CookieCache extends Iterable<Cookie> {
 
     /**
      * Add all the new cookies to the session, existing cookies will be overwritten.
      *
      * @param cookies
      */
-    fun addAll(cookies: Collection<Cookie>)
+    void addAll(Collection<Cookie> cookies);
 
     /**
      * Clear all the cookies from the session.
      */
-    fun clear()
+    void clear();
 }
